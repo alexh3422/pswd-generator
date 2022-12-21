@@ -13,18 +13,56 @@ function writePassword() {
 }
 
 function generatePassword () { 
-  var length = passwordlength();
-  var lowercase = passwordlowercase();
-  var uppercase = passworduppercase();
-  var numeric = passwordnumeric();
-  var specialcharacters = passwordspecialcharacters();
+  var charcount = passwordlength();
+  var chartypecount = false 
+  // Code below verifies that at least one character type is selected
+  while (!chartypecount){
+    var lowercase = passwordlowercase();
+    var uppercase = passworduppercase();
+    var numeric = passwordnumeric();
+    var special = passwordspecialcharacters();
+    chartypecount = lowercase || uppercase || numeric || special
+    if (!chartypecount) {
+      alert("Please select at least one  character  type")
+    }
+  }
+  // variables below define what characters will be used for password
   var lowercasecharacters = "abcdefghijklmnopqrstuvwxyz";
   var uppercasecharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numericcharacters = "0123456789";
-  var specialcharacters = "!@#$%^&*;:<>?/|";
+  var specialcharacters = "!@#$%^&*";
+  var passworddomain = ""
+  if (lowercase) {
+    passworddomain = passworddomain.concat(lowercasecharacters)
+  }
+  if (uppercase) {
+    passworddomain = passworddomain.concat(uppercasecharacters)
+  }
+  if (numeric) {
+    passworddomain = passworddomain.concat(numericcharacters)
+  }
+  if (special) {
+    passworddomain = passworddomain.concat(specialcharacters)
+  }
+
+// passworddomanin contains all allowed password characters, so build the password to the desired length
+
+  var password = ""
+  var i = 0
+  while (i < charcount){
+    // var a = passworddomain.length
+    // var b = Math.floor(Math.random() * a) // generates a single number from 0 to the length of the password domain -1
+    // var c = passworddomain[b] // strings that are created from characters  that are pulled
+    // password = password.concat(c) // taking  those charactes out of  the created substrings and  adding them onto the password (final product)
+     password = password.concat(passworddomain[Math.floor(Math.random() * passworddomain.length)])
+    i = i + 1
+ 
+  }
+  return password;
 }
 
-// add functionality to validate input - while loop 
+//function below allows the user to select how long their password will be. If they select anu number below 8 or above 128
+//Then they will be prompted to try again 
 function passwordlength () {
   var lengthisok = false
   while (!lengthisok) {
@@ -37,24 +75,24 @@ function passwordlength () {
 return length;
 }
 
-
+// functions below take the user through the prompts selecting character types to create their password
 function passwordlowercase () {
-  var lowercase = confirm("Would you like to include lowercase letters? Press OK for yes, Cancel for no.");
+  var lowercase = confirm("Must password include lowercase letters? Press OK for yes, Cancel for no.");
   return lowercase;
 }
 
 function passworduppercase () {
-  var uppercase = confirm("Would you like to include uppercase letters? Press OK for yes, Cancel for no.");
+  var uppercase = confirm("Must password include uppercase letters? Press OK for yes, Cancel for no.");
   return uppercase;
 }
 
 function passwordnumeric () {
-  var numeric = confirm("Would you like to include numeric characters? Press OK for yes, Cancel for no.");
+  var numeric = confirm("Must password include numeric characters? Press OK for yes, Cancel for no.");
   return numeric;
 }
 
 function passwordspecialcharacters () {
-  var specialcharacters = confirm("Would you like to include special characters? Press OK for yes, Cancel for no.");
+  var specialcharacters = confirm("Must password include special characters? Press OK for yes, Cancel for no.");
   return specialcharacters;
 }
 
