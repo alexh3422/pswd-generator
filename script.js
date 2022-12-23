@@ -45,15 +45,13 @@ function generatePassword () {
     passworddomain = passworddomain.concat(specialcharacters)
   }
 
-// passworddomanin contains all allowed password characters, so build the password to the desired length
+// passworddomanin contains all allowed password characters
 
   var password = ""
   var i = 0
 
   while (i < charcount){
-    // var a = passworddomain.length
-    // var b = Math.floor(Math.random() * a) // generates a single number from 0 to the length of the password domain -1
-    // var c = passworddomain[b] // strings that are created from characters  that are pulled
+    
     // password = password.concat(c) // taking  those charactes out of  the created substrings and  adding them onto the password (final product)
      password = password.concat(passworddomain[Math.floor(Math.random() * passworddomain.length)])
     i = i + 1
