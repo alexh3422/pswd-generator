@@ -78,6 +78,8 @@ function generatePassword () {
   var password = ""
   var i = 0
 
+  // picks at least one from each character type selected by the user to start the password
+
   if (lowercase) {
    passwordstring += lowercasecharacters[Math.floor(Math.random() * lowercasecharacters.length)]
    i = i + 1
@@ -94,7 +96,7 @@ function generatePassword () {
     passwordstring += specialcharacters[Math.floor(Math.random() * specialcharacters.length)]
    i = i + 1
   }
-  alert (passwordstring)
+  //randomizing the rest of the password
   while (i < charcount){
     
     // password = password.concat(c) // taking  those charactes out of  the created substrings and  adding them onto the password (final product)
@@ -105,13 +107,13 @@ function generatePassword () {
 
   //password string contains all of  the characters selected by the user but now we need to randomize order so it doesnt always start with the same character types and is truly random
   i = 0
-  alert (passwordstring)
+  
   while (passwordstring.length > 0) {
     var randomindex = Math.floor(Math.random() * passwordstring.length)
     var c = passwordstring[randomindex]
     password = password.concat(c)
     passwordstring = passwordstring.slice(0, randomindex).concat(passwordstring.slice(randomindex + 1))
-    alert (passwordstring + ":" + password)
+   
   }
 
   return password;
