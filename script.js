@@ -49,6 +49,7 @@ function generatePassword () {
 
   var password = ""
   var i = 0
+
   while (i < charcount){
     // var a = passworddomain.length
     // var b = Math.floor(Math.random() * a) // generates a single number from 0 to the length of the password domain -1
@@ -61,7 +62,7 @@ function generatePassword () {
   return password;
 }
 
-//function below allows the user to select how long their password will be. If they select anu number below 8 or above 128
+//function below allows the user to select how long their password will be. If they select anys number below 8 or above 128
 //Then they will be prompted to try again 
 function passwordlength () {
   var lengthisok = false
